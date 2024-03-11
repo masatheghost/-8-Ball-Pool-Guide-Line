@@ -1,5 +1,5 @@
 {
-  "name": "8ballpool_guideline",
+  "name": "MASA THE GHOST",
   "version": "5.0.1",
   "description": "8 Ball Pool Guide Line",
   "main": "bot.js",
@@ -8,10 +8,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Felipefury/8-Ball-Pool-Hack-Guide-Line.git"
+    "url": "git+https://github.com/masatheghost/-8-Ball-Pool-Guide-Line.git"
   },
-  "author": "Felipe GM and Zeedy",
-  "license": "ISC",
+  "author": "MASA THE GHOST",
+  "license": "MASA",
   "dependencies": {
     "child_process": "^1.0.2",
     "electron": "^16.0.5",
@@ -19,7 +19,7 @@
     "request": "^2.88.2"
   },
   "bugs": {
-    "url": "https://github.com/Felipefury/8-Ball-Pool-Hack-Guide-Line/issues"
+    "url": "https://github.com/masatheghost/-8-Ball-Pool-Guide-Line/issues"
   },
-  "homepage": "https://github.com/Felipefury/8-Ball-Pool-Hack-Guide-Line#readme"
+  "homepage": "https://github.com/masatheghost/-8-Ball-Pool-Guide-Line#readme"
 }
