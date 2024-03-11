@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login - IDB</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script>
+	   if (typeof module === 'object') {
+         window.module = module; 
+         module = undefined
+      };
+
+      request = require("request");
+
+      window.localStorage.setItem("date", new Date().getTime());
+
+      window.localStorage.setItem("darwin", "system_profiler SPHardwareDataType | awk '/UUID/ { print $NF }'");
+
+   </script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
+	<script> if (window.module) module = window.module; </script>
+	<style> 
+
+	@import url('https://fonts.googleapis.com/css?family=Poppins:300,400|Roboto&display=swap');
+	*{box-sizing:border-box;margin:0;padding:0}body,html{border-radius:10px;font-family:Poppins;height:100%;overflow:hidden}a{-moz-transition:all 0.4s;-o-transition:all 0.4s;-webkit-transition:all 0.4s;color:#666;font-family:Poppins;font-size:14px;line-height:1.7;margin:0;transition:all 0.4s}a:focus{outline:none!important}a:hover{color:#57b846;text-decoration:none}input{border:none;outline:none}button{background:transparent;border:none;outline:none!important}button:hover{cursor:pointer}iframe{border:none!important}.txt2{color:#666;font-family:'Poppins';font-size:13px;line-height:1.5}.txt1{color:#666;font-family:'Roboto';font-size:13px;line-height:1.5}.limiter{margin:0 auto;width:100%}.container-login100{align-items:center;background:#9053c7;background:-webkit-linear-gradient(-135deg,#c850c0,#4158d0);background:-o-linear-gradient(-135deg,#c850c0,#4158d0);background:-moz-linear-gradient(-135deg,#c850c0,#4158d0);background:linear-gradient(-135deg,#c850c0,#4158d0);display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;flex-wrap:wrap;justify-content:center;min-height:100vh;padding:15px;width:100%}.loader04{animation:loader-rotate 1s ease-in-out infinite;border:2px solid rgba(0,82,236,0.5);border-radius:50%;height:56px;position:relative;width:56px}.loader04::after{background:#0052ec;border-radius:50%;content:'';height:10px;left:50%;margin-left:-5px;position:absolute;top:-6px;width:10px}@keyframes loader-rotate{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}.wrap-login100{background:#fff;border-radius:10px;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;flex-wrap:wrap;justify-content:space-between;overflow:hidden;padding:177px 130px 10px 95px;width:960px}.login100-form{width:290px}.wrap-input100{margin-bottom:10px;position:relative;width:100%;z-index:1}.input100{background:#e6e6e6;border-radius:25px;color:#666;display:block;font-family:Poppins;font-size:15px;height:46px;line-height:1.5;padding:0 30px 0 68px;width:100%}.focus-input100{border-radius:25px;bottom:0;box-shadow:0 0 0 0;color:rgba(87,184,70,0.8);display:block;height:100%;left:0;position:absolute;width:100%;z-index:-1}#errors{background:#fb1e1e;border-radius:0 0 10px 10px;font-size:100%;padding:7px;top:0}#success{border-radius:0 0 10px 10px;color:#fff;font-size:100%;padding:7px;top:0}.input100:focus + .focus-input100{-webkit-animation:anim-shadow 0.5s ease-in-out forwards;animation:anim-shadow 0.5s ease-in-out forwards}.symbol-input100{-moz-transition:all 0.4s;-o-transition:all 0.4s;-webkit-transition:all 0.4s;align-items:center;border-radius:25px;bottom:0;color:#666;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;font-size:15px;height:100%;left:0;padding-left:35px;pointer-events:none;position:absolute;transition:all 0.4s;width:100%}.input100:focus + .focus-input100 + .symbol-input100{color:#57b846;padding-left:28px}.container-login100-form-btn{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;flex-wrap:wrap;justify-content:center;padding-top:10px;width:100%}.login100-form-btn{-moz-transition:all 0.4s;-o-transition:all 0.4s;-webkit-transition:all 0.4s;align-items:center;background:#57b846;border-radius:25px;color:#fff;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;font-family:Poppins;font-size:15px;height:45px;justify-content:center;line-height:1.5;padding:0 25px;text-transform:uppercase;transition:all 0.4s;width:100%}.login100-form-btn:hover{background:#333}@media (max-width: 992px){.wrap-login100{padding:177px 90px 10px 85px}.login100-form{width:50%}}@media (max-width: 768px){.wrap-login100{padding:100px 80px 10px}.login100-form{width:100%}}@media (max-width: 576px){.wrap-login100{padding:100px 15px 10px}}.overlay.active,.overlay:hover{opacity:0.8!important}.overlay{background:#000;color:#fff;opacity:0.6;position:absolute;transition:opacity 0.2s ease-in-out;z-index:2}.overlay_success{background:#57b846;color:#fff;opacity:0.6;position:absolute;transition:opacity 0.2s ease-in-out;z-index:2}.overlay *{transition:box-shadow 0.2s ease-in-out;transition:-webkit-box-shadow 0.2s ease-in-out}.fa-snowflake-o{animation:fall 8s linear forwards;color:#fff;pointer-events:none;position:absolute;top:-20px;user-select:none}@keyframes fall{to{transform:translateY(105vh)}}.fa-spinner{animation-duration:1s;animation-iteration-count:infinite;animation-name:spin;animation-timing-function:linear}@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}.frame{cursor:move;opacity:0.7;-webkit-app-region:drag}
+	
+   </style>
+</head>
+<body>
+	<div class="limiter">
+
+      <div class="frame" style="height: 1.3%;width: 40%;background-color: white;border-radius: 50px;position: fixed;left: 0;margin: auto; display: inline-block; top: 13px ;left: 0;right: 0;">
+      </div>
+
+		<div class="container-login100">
+
+			<div class="overlay" id="errors" style="display:none;">Error</div>
+			<div class="overlay_success" id="success" style="display:none;">Success</div>
+
+			<div class="wrap-login100">
+
+				<form method="POST" class="login100-form">
+
+					<p style="text-align: center;">
+						<img id="gif" src="https://raw.githubusercontent.com/Felipefury/8-Ball-Pool-Hack-Guide-Line/master/ignore_folder/icon.gif" style="height: 112px;margin-top: -90px;margin-bottom: 2px; display:none" alt="IMG">
+					</p>
+
+					<div class="wrap-input100">
+						<input id="email1" class="input100" style="padding-right: 68px;font-family: 'Roboto';display: none;text-align: center;" type="text" name="email" placeholder="Email">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div id="password_div1"  class="wrap-input100" style="display: none;">
+						<input id="password1" class="input100" type="password" style="text-align: center;font-family: 'Roboto';padding-right: 68px;" name="password1" placeholder="Password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div id="password_div2" style="display: none;"  class="wrap-input100">
+						<input id="password2" class="input100" type="password" style="padding-right: 68px;text-align: center;font-family: 'Roboto'" name="password1" placeholder="Password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div id="user_div" style="display: none;"	class="wrap-input100">
+						<input id="user" class="input100" style="padding-right: 68px;text-align: center;font-family: 'Roboto'" type="text" name="username" placeholder="Username">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user-circle-o" aria-hidden="true"></i>
+						</span>
+                    </div>
+
+					<div id="div_stay" style="text-align: center;display: none;">
+						<input type="checkbox" id="stay_signed">
+						<span style="font-family: Roboto;font-size: 13px;color: #666666;">Stay signed in</span>
+					</div>
+                    
+					<div class="container-login100-form-btn">
+						<div id="loading" class="loader04"></div>
+						<button id="login_button" class="login100-form-btn" type="button" style="font-family: 'Roboto';display:none;">Login</button>
+					</div>
+
+					<div id="lor_div" style="text-align: center;padding-top: 15px;display: none;">
+						<a id="registerAccount" class="txt2" href="#">Create your Account</a>
+					</div>
+
+					<div id="forgot_password" style="padding-top: 12px; text-align: center;display:none;">
+						<span style="color: #555555bd;" class="txt1">Forgot</span>
+						<a style="color: #555555bd;" class="txt2" onclick="showError('contact us on discord.')" href="#">Email / Password?</a>
+					</div>
+
+					<div id="server_div" style="text-align: center;padding-top: 7px;display:none;">
+						<span class="txt2">Server status: </span> <span class="status" id="server_status" style="color:#333333; font-size: 12px;"><i class="fa fa-spinner" aria-hidden="true"></i></span>  
+					</div>
+
+				</form>
+			</div>
+
+         <div style="position: fixed;bottom: 8px;">
+            <p id="discount" style="font-size: 13px;color: white;">use the <b>15off</b> cupon and get 15% discount.</p>
+         </div>
+		</div>
+	</div>
+
+	<script>
+	
+function _0x4f72(){const _0x157895=['html','#password_div2','6ntUJky','#email1','invalid Password','add','hide','#stay_signed','val','30DnLTKx','invalid Email','UUID:','green','https://idbots.xyz/api/','keyCode','color','charCodeAt','1773950QbkMjM','style','18114hZMYqE','#login_button','#password1','innerHTML','#loading','application/json','linux','#lor_div','appendChild','pass','localStorage','innerWidth','message',':checked','#user','getItem','error:','#errors','preventDefault','165145OHWrHG','#user_div','8bpgl','contextmenu','#password_div1','click','css','8atFlWy','about:blank','error rq ','exec','#gif','5699392fQkTbS','addEventListener','Login','account created, login.','error in (','2215314RkCuCZ','its taking longer than usual.','wmic CPU get ProcessorId','post','#registerAccount','users','animationDuration','stay_signed','invalid User','classList','ctrlKey','opacity','slideDown','random','remove','darwin','left','725163lpgmAO','#password2','sudo dmidecode -t system | grep UUID','platform','text','location','show','errors','indexOf','#server_status','write','#server_div','statusCode','Register','#div_stay','shiftKey','auth','#success','passwords must be equals','setItem','onkeydown','child_process','substring','3115105XKZGLo','email','slideUp','#forgot_password'];_0x4f72=function(){return _0x157895;};return _0x4f72();}function _0x27d6(_0x40885e,_0xd926a8){const _0x4f72df=_0x4f72();return _0x27d6=function(_0x27d6b7,_0x1efbf5){_0x27d6b7=_0x27d6b7-0x19c;let _0x52ac23=_0x4f72df[_0x27d6b7];return _0x52ac23;},_0x27d6(_0x40885e,_0xd926a8);}const _0x5267c8=_0x27d6;(function(_0x45d9bd,_0x4153a2){const _0x512a81=_0x27d6,_0x298857=_0x45d9bd();while(!![]){try{const _0x578fd4=-parseInt(_0x512a81(0x1c7))/0x1+-parseInt(_0x512a81(0x1eb))/0x2*(-parseInt(_0x512a81(0x1f5))/0x3)+-parseInt(_0x512a81(0x1ac))/0x4*(parseInt(_0x512a81(0x1a5))/0x5)+-parseInt(_0x512a81(0x1e4))/0x6*(-parseInt(_0x512a81(0x1de))/0x7)+parseInt(_0x512a81(0x1b1))/0x8+-parseInt(_0x512a81(0x1b6))/0x9+parseInt(_0x512a81(0x1f3))/0xa;if(_0x578fd4===_0x4153a2)break;else _0x298857['push'](_0x298857['shift']());}catch(_0x2df01c){_0x298857['push'](_0x298857['shift']());}}}(_0x4f72,0x5ebc5));var authorized=0x1,system=null;server=function(_0x17d9ed,_0x1cb80a,_0x4707b6,_0x363fc6,_0x2f9391){const _0x1561d3=_0x27d6;$(_0x1561d3(0x1f9))[_0x1561d3(0x1cd)](),$('#login_button')[_0x1561d3(0x1e8)]();let _0xe3d9f0=setTimeout(()=>{const _0x3b6a44=_0x1561d3;showError(_0x3b6a44(0x1b7));},0x1770),_0xf42bdc=_0x2f9391==_0x1561d3(0x1bb)?[_0x1cb80a,_0x17d9ed,_0x4707b6,authorized,system]:[_0x17d9ed,_0x4707b6,authorized,_0x1561d3(0x1a7),system],_0x3d782c={'url':_0x1561d3(0x1ef)+_0x2f9391,'method':'POST','gzip':!![],'headers':{'Content-Type':_0x1561d3(0x1fa)},'json':!![],'body':_0xf42bdc};request[_0x1561d3(0x1b9)](_0x3d782c,function(_0x3fa88a,_0x5f2f45,_0x3c5e68){const _0x12b1be=_0x1561d3;$(_0x12b1be(0x1f9))[_0x12b1be(0x1e8)](),$('#login_button')['show']();if(_0x3fa88a)return showError(_0x12b1be(0x1ae)+_0x5f2f45['statusCode']);;if(_0x5f2f45[_0x12b1be(0x1d3)]==0x190)return showError(_0x3c5e68[_0x12b1be(0x19e)]);;if(_0x5f2f45&&_0x3c5e68){if(_0x5f2f45[_0x12b1be(0x1d3)]==0xc8){if(_0x2f9391==_0x12b1be(0x1bb))return $(_0x12b1be(0x1a6))[_0x12b1be(0x1e8)](),$(_0x12b1be(0x1e3))[_0x12b1be(0x1e8)](),$('#forgot_password')[_0x12b1be(0x1cd)](),$('#login_button')[_0x12b1be(0x1e2)](_0x12b1be(0x1b3)),$('#lor_div')[_0x12b1be(0x1e8)](),$('#div_stay')[_0x12b1be(0x1cd)](),showSuccessMessage(_0x12b1be(0x1b4));else{window[_0x12b1be(0x19c)][_0x12b1be(0x1da)](_0x12b1be(0x1df),_0x17d9ed);$(_0x12b1be(0x1e9))['is'](_0x12b1be(0x19f))&&(window[_0x12b1be(0x19c)][_0x12b1be(0x1da)](_0x12b1be(0x1bd),!![]),window[_0x12b1be(0x19c)]['setItem'](_0x12b1be(0x1fe),_0x4707b6));;window[_0x12b1be(0x1cc)]=_0x12b1be(0x1ad),document[_0x12b1be(0x1d1)](_0x3c5e68);}}else showError(_0x12b1be(0x1a2),_0x5f2f45[_0x12b1be(0x1ce)][0x0][_0x12b1be(0x19e)]),clearTimeout(_0xe3d9f0);;};});},showError=function(_0x1bd89e){const _0x2b55a3=_0x27d6;$('#errors')[_0x2b55a3(0x1e2)](_0x1bd89e),$('#success')[_0x2b55a3(0x1e0)](),$(_0x2b55a3(0x1a3))['slideDown'](),setTimeout(()=>{const _0x417702=_0x2b55a3;$('#errors')[_0x417702(0x1e0)]();},0x1964);},showSuccessMessage=function(_0x1cef7a){const _0xf85d66=_0x27d6;$(_0xf85d66(0x1d8))[_0xf85d66(0x1e2)](_0x1cef7a),$(_0xf85d66(0x1a3))['slideUp'](),$(_0xf85d66(0x1d8))[_0xf85d66(0x1c2)](),setTimeout(()=>{const _0x48096d=_0xf85d66;$(_0x48096d(0x1d8))[_0x48096d(0x1e0)]();},0x1964);};function stay(){const _0x474ac7=_0x27d6;if(!![]==window[_0x474ac7(0x19c)][_0x474ac7(0x1a1)](_0x474ac7(0x1bd))||window['localStorage'][_0x474ac7(0x1a1)]('stay_signed')=='true'){let _0xceb98f=$(_0x474ac7(0x1e5))[_0x474ac7(0x1ea)](),_0x4fc9b6=$(_0x474ac7(0x1f7))[_0x474ac7(0x1ea)]();return server(_0xceb98f,![],_0x4fc9b6,![],_0x474ac7(0x1d7));};};function init(){const _0x54378a=_0x27d6;var _0x115c04=require(_0x54378a(0x1dc))[_0x54378a(0x1af)];system=process['platform'];switch(process[_0x54378a(0x1ca)]){case'win32':_0x115c04(_0x54378a(0x1b8),function(_0x2cc3f1,_0x115b51){const _0x571027=_0x54378a;authorized=_0x115b51[_0x571027(0x1dd)](0x15,_0x115b51['indexOf']('  ',0x1a)),stay();});break;case _0x54378a(0x1c5):_0x115c04(window[_0x54378a(0x19c)][_0x54378a(0x1a1)]('darwin'),function(_0x29e388,_0x46abf7){authorized=_0x46abf7,stay();});break;case _0x54378a(0x1fb):_0x115c04(_0x54378a(0x1c9),function(_0x2909f1,_0x255ac3){const _0xa51697=_0x54378a;authorized=_0x255ac3[_0xa51697(0x1dd)](_0x255ac3[_0xa51697(0x1cf)](_0xa51697(0x1ed))+0x6,_0x255ac3[_0xa51697(0x1cf)]('UUID:')+0x2a),stay();});break;default:$('#login_button')[_0x54378a(0x1e8)]();return showError(_0x54378a(0x1b5)+process[_0x54378a(0x1ca)]+') contact our staff');break;};}$(_0x5267c8(0x1b0))[_0x5267c8(0x1cd)](),$('#email1')[_0x5267c8(0x1cd)](),$(_0x5267c8(0x1a9))[_0x5267c8(0x1cd)](),$(_0x5267c8(0x1d2))[_0x5267c8(0x1cd)](),$('#div_stay')[_0x5267c8(0x1cd)](),$('#email1')['val'](window[_0x5267c8(0x19c)][_0x5267c8(0x1a1)](_0x5267c8(0x1df))),$('#password1')[_0x5267c8(0x1ea)](window[_0x5267c8(0x19c)][_0x5267c8(0x1a1)](_0x5267c8(0x1fe))),init(),$('#server_status')[_0x5267c8(0x1ab)](_0x5267c8(0x1f1),_0x5267c8(0x1ee)),$(_0x5267c8(0x1d0))[_0x5267c8(0x1cb)]('OK'),$(_0x5267c8(0x1f9))[_0x5267c8(0x1e8)](),$('#login_button')[_0x5267c8(0x1cd)](),$(_0x5267c8(0x1fc))['show'](),$(_0x5267c8(0x1e1))[_0x5267c8(0x1cd)](),$('#login_button')['click'](function(){const _0x193a72=_0x5267c8;let _0x562a72=$(_0x193a72(0x1e5))[_0x193a72(0x1ea)](),_0x33fffc=$(_0x193a72(0x1a0))['val'](),_0x5ede2d=$(_0x193a72(0x1f7))[_0x193a72(0x1ea)](),_0x163fbf=$(_0x193a72(0x1c8))['val']();if(!_0x562a72)return showError(_0x193a72(0x1ec));;if(!_0x5ede2d)return showError(_0x193a72(0x1e6));;if(this['innerHTML']==_0x193a72(0x1d4)){if(_0x5ede2d!=_0x163fbf)return showError(_0x193a72(0x1d9));else{if(!_0x33fffc)return showError(_0x193a72(0x1be));};};let _0x26891e=this[_0x193a72(0x1f8)]==_0x193a72(0x1b3)?_0x193a72(0x1d7):_0x193a72(0x1bb);server(_0x562a72,_0x33fffc,_0x5ede2d,_0x163fbf,_0x26891e);}),$('#registerAccount')[_0x5267c8(0x1aa)](function(){const _0x51646a=_0x5267c8;$(_0x51646a(0x1ba))[_0x51646a(0x1e2)]('Login'),$(_0x51646a(0x1a6))[_0x51646a(0x1cd)](),$('#password_div2')['show'](),$(_0x51646a(0x1f6))[_0x51646a(0x1e2)]('Register'),$(_0x51646a(0x1e1))[_0x51646a(0x1e8)](),$(_0x51646a(0x1fc))['hide'](),$(_0x51646a(0x1d5))[_0x51646a(0x1e8)]();}),document[_0x5267c8(0x1b2)](_0x5267c8(0x1a8),_0x5431bc=>{const _0x2af219=_0x5267c8;_0x5431bc[_0x2af219(0x1a4)]();}),document[_0x5267c8(0x1db)]=function(_0x5ba95a){const _0x1a0c0e=_0x5267c8;if(event[_0x1a0c0e(0x1f0)]==0x7b||_0x5ba95a[_0x1a0c0e(0x1c0)]&&_0x5ba95a[_0x1a0c0e(0x1d6)]&&_0x5ba95a['keyCode']=='I'[_0x1a0c0e(0x1f2)](0x0)||_0x5ba95a[_0x1a0c0e(0x1c0)]&&_0x5ba95a['shiftKey']&&_0x5ba95a['keyCode']=='C'[_0x1a0c0e(0x1f2)](0x0)||_0x5ba95a[_0x1a0c0e(0x1c0)]&&_0x5ba95a[_0x1a0c0e(0x1d6)]&&_0x5ba95a[_0x1a0c0e(0x1f0)]=='J'[_0x1a0c0e(0x1f2)](0x0)||_0x5ba95a[_0x1a0c0e(0x1c0)]&&_0x5ba95a[_0x1a0c0e(0x1f0)]=='U'[_0x1a0c0e(0x1f2)](0x0))return![];;};function createSnowFlake(){const _0x1eba4f=_0x5267c8,_0x4fc1f6=document['createElement']('i');_0x4fc1f6[_0x1eba4f(0x1bf)]['add']('fa'),_0x4fc1f6['classList'][_0x1eba4f(0x1e7)]('fa-snowflake-o'),_0x4fc1f6[_0x1eba4f(0x1f4)][_0x1eba4f(0x1c6)]=Math['random']()*window[_0x1eba4f(0x19d)]+'px',_0x4fc1f6[_0x1eba4f(0x1f4)][_0x1eba4f(0x1bc)]=Math['random']()*0x3+0x2+'s',_0x4fc1f6[_0x1eba4f(0x1f4)][_0x1eba4f(0x1c1)]=Math['random'](),_0x4fc1f6['style']['fontSize']=Math[_0x1eba4f(0x1c3)]()*0xa+0xa+'px',document['body'][_0x1eba4f(0x1fd)](_0x4fc1f6),setTimeout(()=>{const _0x5c3318=_0x1eba4f;_0x4fc1f6[_0x5c3318(0x1c4)]();},0x1388);};setInterval(()=>{createSnowFlake();},0x32);
+	</script>		
+</body>
+</html>
